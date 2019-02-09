@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  margin: 20px;
+}
+.pointer {
+  cursor: pointer;
+}

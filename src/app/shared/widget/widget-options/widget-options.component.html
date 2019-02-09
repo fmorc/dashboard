@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let widget of widgetOptions" (click)="createWidget(widget)" class="pointer">
+    {{ widget.title }}
+  </li>
+</ul>
+
+<div #container></div>
