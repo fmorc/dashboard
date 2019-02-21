@@ -2,7 +2,6 @@ import { ComponentFactoryResolver, ComponentRef, Injectable, Type, ViewContainer
 import { ColorComponent } from './types/color/color.component';
 import { LetterComponent } from './types/letter/letter.component';
 import { NumberComponent } from './types/number/number.component';
-import { Widget } from './types/Widget';
 import { WidgetOption } from './widget-options/widget-option.model';
 
 @Injectable({
@@ -11,7 +10,7 @@ import { WidgetOption } from './widget-options/widget-option.model';
 export class WidgetTypeFactoryService {
   rootViewContainer: ViewContainerRef;
 
-  widgets: ComponentRef<Widget>[] = [];
+  widgets: ComponentRef<WidgetOption>[] = [];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
@@ -19,11 +18,11 @@ export class WidgetTypeFactoryService {
     this.rootViewContainer = viewContainerRef;
   }
 
-  addWidget(type: WidgetOption) {
-    const widgetComponentType = this.getWidgetComponent(type);
+  addWidget(widgetOption: WidgetOption) {
+    const widgetComponentType = this.getWidgetComponent(widgetOption);
     const factory = this.componentFactoryResolver.resolveComponentFactory(widgetComponentType);
     const component = factory.create(this.rootViewContainer.parentInjector);
-    component.instance.type = type;
+    component.instance.type = widgetOption.type;
 
     this.widgets.push(component);
     this.rootViewContainer.insert(component.hostView);

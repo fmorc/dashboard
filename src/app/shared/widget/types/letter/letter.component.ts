@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetOption } from '../../widget-options/widget-option.model';
-import { Widget } from '../Widget';
 
 @Component({
   selector: 'app-letter',
   templateUrl: './letter.component.html',
   styleUrls: ['./letter.component.scss']
 })
-export class LetterComponent implements OnInit, Widget {
-  type: WidgetOption;
+export class LetterComponent implements OnInit, WidgetOption {
+  id: number;
+  title: string;
+  type: string;
   letter: string;
   private readonly letters: string[] = [
     'A',
